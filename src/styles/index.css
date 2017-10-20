@@ -1,3 +1,13 @@
+:root {
+  --blue: #2aa3ef;
+  --skyblue: #50b4f1;
+  --light-blue: #e8f5fd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,8 +15,10 @@ body {
 }
 
 .App {
+  width: 100vw;
   height: 100vh;
+  padding: 2em;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
