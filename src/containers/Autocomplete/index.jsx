@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { debounce } from 'throttle-debounce';
 
 import TrackList from './../../modules/tracks/components/TrackList';
@@ -8,6 +9,7 @@ import Form from './../../shared/Form';
 import './index.css';
 
 import api from './../../utils/api';
+import tracks from './../../modules/tracks';
 
 class Autocomplete extends Component {
   constructor(props) {
@@ -64,4 +66,6 @@ class Autocomplete extends Component {
   }
 }
 
-export default Autocomplete;
+export default connect(null, {
+  searchTracks: tracks.actions.searchTracks,
+})(Autocomplete);
