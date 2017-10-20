@@ -2,14 +2,15 @@ import React from 'react';
 
 import './index.css';
 
-const Form = () => {
+const Form = ({ placeholder, value, handleChange, handleSubmit }) => {
   return (
-    <form className="Form" onSubmit={e => e.preventDefault()}>
+    <form className="Form" onSubmit={handleSubmit}>
       <input
         className="Form-input"
         type="text"
-        placeholder="Search..."
-        onChange={e => console.log(e.target.value)}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
       />
     </form>
   );

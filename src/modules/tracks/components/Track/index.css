@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 1em;
+  width: 80%;
 }
 
 .Track-title {

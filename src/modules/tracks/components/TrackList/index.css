@@ -16,3 +16,9 @@
   top: -20px;
   left: 0;
 }
+
+.TrackList-message {
+  padding: 1em;
+  font-weight: bold;
+  color: gray;
+}

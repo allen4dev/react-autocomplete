@@ -4,14 +4,14 @@ import './index.css';
 
 import Track from './../Track';
 
-const TrackList = () => {
+const TrackList = ({ items, message }) => {
   return (
     <div className="TrackList">
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
+      <ul className="TrackList-items">
+        {items.map(track => <Track key={track.id} {...track} />)}
+      </ul>
+
+      {message && <p className="TrackList-message">{message}</p>}
     </div>
   );
 };
