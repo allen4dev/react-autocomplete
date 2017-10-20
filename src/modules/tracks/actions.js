@@ -21,6 +21,6 @@ export function searchTracks(term) {
 
     dispatch(setTracks(response));
 
-    return response.entities.tracks;
+    return response.result;
   };
 }

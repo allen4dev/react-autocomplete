@@ -8,7 +8,6 @@ import Form from './../../shared/Form';
 
 import './index.css';
 
-import api from './../../utils/api';
 import tracks from './../../modules/tracks';
 
 class Autocomplete extends Component {
@@ -18,7 +17,6 @@ class Autocomplete extends Component {
 
     this.state = {
       term: '',
-      results: [],
       message: 'Search something',
     };
   }
@@ -41,14 +39,14 @@ class Autocomplete extends Component {
     const search = term.toLowerCase();
 
     if (search.length === 0) {
-      return this.setState({ results: [], message: 'Search something' });
+      return this.setState({ message: 'Search something' });
     }
 
-    const results = await api.searchTracks(search);
+    const results = await this.props.searchTracks(search);
 
     return results.length > 0
-      ? this.setState({ results, message: '' })
-      : this.setState({ results: [], message: 'No results found' });
+      ? this.setState({ message: '' })
+      : this.setState({ message: 'No results found' });
   }
 
   render() {
@@ -60,12 +58,20 @@ class Autocomplete extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <TrackList items={this.state.results} message={this.state.message} />
+        <TrackList items={this.props.items} message={this.state.message} />
       </div>
     );
   }
 }
 
-export default connect(null, {
+function mapStateToProps(state) {
+  const ids = state.tracks.results;
+
+  return {
+    items: ids.map(id => state.tracks.entities[id]),
+  };
+}
+
+export default connect(mapStateToProps, {
   searchTracks: tracks.actions.searchTracks,
 })(Autocomplete);

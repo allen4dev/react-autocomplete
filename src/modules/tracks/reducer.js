@@ -18,7 +18,7 @@ function entitiesReducer(state = INITIAL_STATE.entities, action = {}) {
 function resultsReducer(state = INITIAL_STATE.results, action = {}) {
   switch (action.type) {
     case actionTypes.SET_TRACKS:
-      return [...state, ...action.response.result];
+      return action.response.result;
 
     default:
       return state;
